@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { get, post, postExport } from './tools';
+import { get } from './tools'; // post, postExport
 import * as config from './config';
 
 axios.defaults.withCredentials = true;

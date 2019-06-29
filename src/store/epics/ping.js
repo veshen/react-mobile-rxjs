@@ -1,5 +1,5 @@
 import { delay, filter, mapTo, map, switchMap } from 'rxjs/operators';
-import { from } from 'rxjs';
+// import { from } from 'rxjs';
 import { getIndexList } from './../../axios/index';
 export const pingEpic = action$ => action$.pipe(
     filter(action => action.type === 'PING'),
