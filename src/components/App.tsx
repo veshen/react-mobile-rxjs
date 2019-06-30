@@ -29,10 +29,7 @@ const styles = require('./App.css')
 //     <button onClick={ping}>start ping</button>
 // </div>)
 
-interface IProps {
-  isPinging: () => boolean
-  ping: () => void
-}
+
 
 const App = ({ isPinging, ping }: IProps) => {
   return (
@@ -42,25 +39,49 @@ const App = ({ isPinging, ping }: IProps) => {
     </div>
   )
 }
+interface TypeOfState {
+    isPinging: boolean
+}
+interface TypeOfDispatch {
+    ping: () => void
+}
+const mapStateToProps = (state:TypeOfState) => ({
+    isPinging : state.isPinging
+});
 
-// class App extends React.Component<IProps, {}> {
+//将action的方法绑定到props上
+const mapDispatchToProps = (dispatch: Function) => {
+    return {
+        ping : () => dispatch(ping()),
+    }
+};
+
+// @connect<TypeOfState, TypeOfDispatch>(
+//     mapStateToProps,
+//     mapDispatchToProps
+// )
+
+interface IProps {
+  isPinging: boolean
+  ping: () => void
+}
+
+// @(connect(mapStateToProps, mapDispatchToProps) as any)
+// class App extends React.Component<IProps , any > {
 //   constructor(props: IProps) {
 //     super(props)
 //     this.state =  {}
 //   }
-//   render () {
+//   public render () {
 //     const { isPinging, ping } = this.props
 //     return (
 //       <div>
-//         <h1 styleName="title-h1">isPinging: {isPinging.toString()}</h1>
-//         <button onClick={ping}>start ping</button>
+//         {/*<h1 styleName="title-h1">isPinging: {isPinging.toString()}</h1>
+//         <button onClick={ping}>start ping</button>*/}
 //       </div>
 //     )
 //   }
 // }
 
-// export default connect(({isPinging}) => ({isPinging}), {ping})(CSSModules(App,styles));
-export default connect(
-  isPinging => isPinging,
-  { ping }
-)(CSSModules(App, styles))
+export default connect(isPinging => isPinging, {ping})(CSSModules(App,styles));
+// export default CSSModules(App, styles)
