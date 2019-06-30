@@ -8,6 +8,7 @@ axios.defaults.withCredentials = true;
 */
 
 export const getIndexList = () => get({url:config.INDEX_LIST});   //首页大盘 豆腐块
+export const getTodoList = () => get({url:config.TODO_LIST});   //首页大盘 豆腐块
 
 // export const deldteEventStatus = (data) => post({url: config.DELDTE_EVENT_STATUS,data});//删除反馈列表
 

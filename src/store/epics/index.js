@@ -1,8 +1,9 @@
 import { combineEpics } from 'redux-observable';
 import {pingEpic,todolistEpic} from './ping';
-// import {todolistEpic} from './todolist';
+import {fetchTodolistEpic} from './todolist';
 
 export default combineEpics(
   pingEpic,
-  todolistEpic
+  todolistEpic,
+  fetchTodolistEpic
 );

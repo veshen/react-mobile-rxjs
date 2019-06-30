@@ -3,8 +3,11 @@ import { createEpicMiddleware } from 'redux-observable';
 
 import  rootEpic  from './epics';
 import pingReducer from './reducers/pingpong'
-
-const epicMiddleware = createEpicMiddleware();
+import * as api from './../axios/index'
+console.log(api)
+const epicMiddleware = createEpicMiddleware({
+  dependencies: { ...api }
+});
 
 const store = createStore(
   pingReducer,
