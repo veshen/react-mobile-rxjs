@@ -1,7 +1,7 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {ping} from '../store/actions'
-import CSSModules from 'react-css-modules';
+import React from 'react'
+import { connect } from 'react-redux'
+import { ping } from '../store/actions'
+import CSSModules from 'react-css-modules'
 const styles = require('./App.css')
 
 // function Example() {
@@ -29,8 +29,6 @@ const styles = require('./App.css')
 //     <button onClick={ping}>start ping</button>
 // </div>)
 
-
-
 const App = ({ isPinging, ping }: IProps) => {
   return (
     <div>
@@ -40,21 +38,21 @@ const App = ({ isPinging, ping }: IProps) => {
   )
 }
 interface TypeOfState {
-    isPinging: boolean
+  isPinging: boolean
 }
 interface TypeOfDispatch {
-    ping: () => void
+  ping: () => void
 }
-const mapStateToProps = (state:TypeOfState) => ({
-    isPinging : state.isPinging
-});
+const mapStateToProps = (state: TypeOfState) => ({
+  isPinging: state.isPinging,
+})
 
 //将action的方法绑定到props上
 const mapDispatchToProps = (dispatch: Function) => {
-    return {
-        ping : () => dispatch(ping()),
-    }
-};
+  return {
+    ping: () => dispatch(ping()),
+  }
+}
 
 // @connect<TypeOfState, TypeOfDispatch>(
 //     mapStateToProps,
@@ -83,5 +81,8 @@ interface IProps {
 //   }
 // }
 
-export default connect(isPinging => isPinging, {ping})(CSSModules(App,styles));
+export default connect(
+  isPinging => isPinging,
+  { ping }
+)(CSSModules(App, styles))
 // export default CSSModules(App, styles)
